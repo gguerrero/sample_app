@@ -28,10 +28,11 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 group :development do
   #gem 'rspec-rails', '2.0.1' Bug request tests
   gem 'rspec-rails', '2.5.0'
+  #gem 'annotate-models', '1.0.2'
 end
 
 group :test do
   #gem 'rspec-rails', '2.0.1' Bug request tests
-  gem 'rspec-rails', '2.5.0'  
+  gem 'rspec-rails', '2.5.0'
   gem 'webrat'
 end
