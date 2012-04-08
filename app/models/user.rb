@@ -25,8 +25,14 @@ class User < ActiveRecord::Base
   
   def self.authenticate(email, submitted_password)
     # Return user if email/password match, otherwise nil
-    user = find_by_email email
+    user = find_by_email(email)
     user && user.has_password?(submitted_password) ? user : nil
+  end
+  
+  def self.authenticate_with_salt(id, cookie_salt)
+    # Return user if id/cookie_salt match, otherwise nil
+    user = find_by_id(id)
+    user && user.salt == cookie_salt ? user : nil
   end
   
   private

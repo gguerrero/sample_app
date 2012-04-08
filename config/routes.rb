@@ -1,5 +1,5 @@
 SampleApp::Application.routes.draw do
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -14,6 +14,7 @@ SampleApp::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
   
   # Sample resource route with options:
   #   resources :products do
@@ -63,4 +64,6 @@ SampleApp::Application.routes.draw do
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
   match '/signup',  :to => 'users#new'
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
 end
