@@ -74,7 +74,7 @@ a:visited {
 nav {
   float: right;
   /* Ruby on Rails Tutorial default 'white' */
-  background-color: #333;
+  background-color: #444;
   padding: 0 0.7em;
   white-space: nowrap;
 }
@@ -189,4 +189,13 @@ div.field, div.actions {
   margin-left: 15px;
   font-size: 12px;
   list-style: square;
+}
+
+/* Users list */
+u1.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
 }

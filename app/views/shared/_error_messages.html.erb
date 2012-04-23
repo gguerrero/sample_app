@@ -1,11 +1,19 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %>
+    <h2><%= pluralize(object.errors.count, "error") %>
         prohibited this user from being saved</h2>
     <p>There were problems with the following fields:</p>
     <u1>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% object.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
+    <% end %>
+    </u1>
+    <u1>
+    <% if object.errors[:password].any? %>
+      <p> Password must contain an upper case character, a lower case
+      character and a digit. The password length should be between 6 and 40 
+      characters.
+      </p>
     <% end %>
     </u1>
   </div>
