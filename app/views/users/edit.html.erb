@@ -4,27 +4,12 @@
   <!--<%= gravatar_for @user %><br />
   <a href="http://gravatar.com/emails">change</a>-->
   <%= link_to gravatar_for(@user, :size => 70),
-              "http://gravatar.com/emails" %>
+              "http://gravatar.com/emails",
+              :target => "_blank" %>
 </div><br />
 
 <%=form_for(@user) do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmation" %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
+  <%= render 'fields', :f => f %>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

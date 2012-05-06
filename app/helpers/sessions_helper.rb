@@ -26,6 +26,10 @@ module SessionsHelper
     !current_user.nil?
   end
   
+  def authenticate
+    denny_access unless signed_in?
+  end
+  
   def denny_access
     store_location
     redirect_to signin_path, :notice => "Please sign in to access this page."

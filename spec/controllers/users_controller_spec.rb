@@ -50,6 +50,21 @@ describe UsersController do
         response.should have_selector("a", :href => "/users?page=2",
                                             :content => "Next")
       end
+
+      describe "as a non-admin user" do
+        it "should not have any delete link" do
+          get :index
+          response.should_not have_selector("a", :content => "delete")
+        end       
+      end
+
+      describe "as an admin user" do
+        it "should have delete links" do
+          @user.toggle!(:admin)
+          get :index
+          response.should have_selector("a", :content => "delete")
+        end
+      end
     end
   end
   
@@ -82,6 +97,14 @@ describe UsersController do
     it "should have a profile image" do
       get :show, :id => @user
       response.should have_selector("h1>img", :class => "gravatar")
+    end
+    
+    it "should show the user's microposts" do
+      mp1 = Factory(:micropost, :user => @user, :content => "Micropost #1")
+      mp2 = Factory(:micropost, :user => @user, :content => "Micropost #2")
+      get :show, :id => @user
+      response.should have_selector("span.content", :content => mp1.content)
+      response.should have_selector("span.content", :content => mp2.content)
     end
   end
   
